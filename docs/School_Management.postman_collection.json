@@ -62,14 +62,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/role/getAllMenusByRoleId/2",
+							"raw": "{{base_url}}/role/getAllMenusByRoleId/3",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"role",
 								"getAllMenusByRoleId",
-								"2"
+								"3"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -97,7 +97,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"roleName\":\"testAdmin\",\n    \"roleDescription\":\"testAdmin\"\n}",
+							"raw": "{\n    \"roleName\":\"student\",\n    \"roleDescription\":\"student for school\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,7 +225,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\"4\",\"2\"]",
+							"raw": "[\"3\"]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -233,14 +233,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/role/addMenusToRole/2",
+							"raw": "{{base_url}}/role/addMenusToRole/3",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"role",
 								"addMenusToRole",
-								"2"
+								"3"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -271,10 +271,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/menu/getAllMenus",
+							"raw": "localhost:8080/menu/getAllMenus",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"menu",
 								"getAllMenus"
@@ -305,7 +306,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"menuName\":\"test2\",\n    \"menuLink\":\"test2.com\",\n    \"menuDescription\":\"test\"\n}\n\n",
+							"raw": "{\n    \"menuName\":\"Results\",\n    \"menuLink\":\"Results.com\",\n    \"menuDescription\":\"Results for student\"\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -398,14 +399,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/menu/deleteMenuById/5",
+							"raw": "{{base_url}}/menu/deleteMenuById/1",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"menu",
 								"deleteMenuById",
-								"5"
+								"1"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -468,13 +469,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/user/getAllUsers",
+							"raw": "{{base_url}}/user/getUserDetailsByUserId/2",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"user",
-								"getAllUsers"
+								"getUserDetailsByUserId",
+								"2"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -499,10 +501,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "password",
+								"value": "Shan",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userName\":\"test.com\"\n}\n\n",
+							"raw": "{\n    \"userName\":\"Guru\",\n    \"roleId\":3\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -517,6 +525,13 @@
 							"path": [
 								"user",
 								"addUser"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "test",
+									"disabled": true
+								}
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -601,12 +616,14 @@
 							{
 								"key": "userid",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "password",
 								"value": "test",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -649,11 +666,11 @@
 						}
 					],
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userName\":\"test.com\"\n}\n\n",
+							"raw": "{\n    \"userName\":\"shan\",\n    \"roleId\":3\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -661,13 +678,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/user/addUser",
+							"raw": "{{base_url}}/user/updateUser/2",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"user",
-								"addUser"
+								"updateUser",
+								"2"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
