@@ -32,11 +32,6 @@ public class UserController {
         this.sessionService=sessionService;
     }
 
-    @PostMapping("/addUser")
-    public ResponseEntity<String> addUser(@RequestBody UserObject userObject, @RequestHeader Map<String, String> headers){
-        return userService.addUser(userObject,headers.get("password"));
-    }
-
     @PostMapping("/login")
     public ResponseEntity<String> doLogin(@RequestHeader Map<String, String> headers, HttpSession session){
         String userId=  headers.get("userid");
@@ -49,11 +44,25 @@ public class UserController {
         return sessionService.logout(session);
     }
 
+
     @GetMapping("/getUserDetailsByUserId/{userId}")
     public ResponseEntity<UserDetailsObject> getUserDetailsByUserId(@PathVariable(value = "userId",required = true) String userId,HttpSession session){
         sessionService.checkAuthentication(session);
         return userService.getUserDetailsByUserId(Long.valueOf(userId));
     }
+
+
+    @PostMapping("/createDefaultSuperUserAndSuperAdminRole")
+    public ResponseEntity<UserDetailsObject> createDefaultSuperUserAndSuperAdminRole(){
+        return userService.createDefaultSuperUserAndSuperAdminRole();
+    }
+
+    @PostMapping("/addUser")
+    public ResponseEntity<String> addUser(@RequestBody UserObject userObject, @RequestHeader Map<String, String> headers,HttpSession session){
+        sessionService.checkIfLoggedInSuperUser(session);
+        return userService.addUser(userObject,headers.get("password"));
+    }
+
 
     @PutMapping("/updateUser/{userId}")
     public ResponseEntity<String> updateUser(@PathVariable(value = "userId",required = true) String userId, @RequestBody UserObject userObject, @RequestHeader Map<String, String> headers,HttpSession session){

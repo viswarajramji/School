@@ -8,13 +8,10 @@ import com.application.management.school.dto.child.MenuDetailsObject;
 import com.application.management.school.dto.child.RoleDetailsObject;
 import com.application.management.school.repository.RoleRepository;
 import com.application.management.school.repository.UserRepository;
-import jakarta.servlet.http.HttpSession;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -105,5 +102,22 @@ public class UserService {
         });
         userDetailsObject.setRoleDetailsObject(roleDetailsObject);
         return ResponseEntity.ok().body(userDetailsObject);
+    }
+
+    public ResponseEntity<UserDetailsObject> createDefaultSuperUserAndSuperAdminRole() {
+        UserModel userModel =new UserModel();
+        userModel.setUserName("SuperAdmin");
+        userModel.setUserPassword("SuperAdmin");
+
+        RoleModel roleModel=new RoleModel();
+        roleModel.setRoleName("SuperAdmin");
+        roleModel.setRoleDescription("Super admin role with this users can actually use the application");
+        roleModel.setUserModelList(List.of(userModel));
+
+        userModel.setRoleModel(roleModel);
+        this.roleRepository.save(roleModel);
+        this.userRepository.save(userModel);
+
+        return getUserDetailsByUserId(userModel.getUserId());
     }
 }

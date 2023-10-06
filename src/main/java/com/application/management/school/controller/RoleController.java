@@ -33,7 +33,8 @@ public class RoleController {
     }
 
     @PostMapping("/addRole")
-    public ResponseEntity<String> addRole(@RequestBody RoleObject roleObject){
+    public ResponseEntity<String> addRole(@RequestBody RoleObject roleObject,HttpSession session){
+        sessionService.checkIfLoggedInSuperUser(session);
        return roleService.addRole(roleObject);
     }
 
