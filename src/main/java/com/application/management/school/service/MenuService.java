@@ -48,7 +48,7 @@ public class MenuService {
     public ResponseEntity<String> deleteMenuById(Long menuId) {
         Optional<MenuModel> savedMenu = this.menuRepository.findById(menuId);
         if (savedMenu.isPresent()) {
-            this.menuRepository.deleteById(menuId);
+            this.menuRepository.delete(savedMenu.get());
             return ResponseEntity.ok().body("Menu was deleted Successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Menu with Id" +String.valueOf(menuId)+" is Not Found");

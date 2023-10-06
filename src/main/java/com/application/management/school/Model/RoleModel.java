@@ -31,14 +31,15 @@ public class RoleModel {
     @Column(name = "ROLE_DESCRIPTION")
     private String roleDescription;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "ROLE_MENU",
             joinColumns = @JoinColumn(name = "ROLE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "MENU_ID")
+            inverseJoinColumns = @JoinColumn(name = "MENU_ID"),
+            cascade = CascadeType.REMOVE
     )
     private List<MenuModel> menuModelList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "roleModel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "roleModel", fetch = FetchType.EAGER)
     private List<UserModel> userModelList;
 }

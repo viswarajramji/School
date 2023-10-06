@@ -1,5 +1,6 @@
 package com.application.management.school.Model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,7 +25,7 @@ public class UserModel {
     @Column(name = "USER_PASSWORD",nullable = false)
     private String userPassword;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "ROLE_ID")
     private RoleModel roleModel;
 }

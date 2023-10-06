@@ -53,7 +53,7 @@ public class RoleService {
     public ResponseEntity<String> deleteRoleById(Long roleId) {
         Optional<RoleModel> savedRole = this.roleRepository.findById(roleId);
         if (savedRole.isPresent()) {
-            this.roleRepository.deleteById(roleId);
+            this.roleRepository.delete(savedRole.get());
             return ResponseEntity.ok().body("Delete of role was Success");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Role Id "+ String.valueOf(roleId)+ " is Not Found");

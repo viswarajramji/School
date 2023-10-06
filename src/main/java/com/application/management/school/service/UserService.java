@@ -8,6 +8,8 @@ import com.application.management.school.dto.child.MenuDetailsObject;
 import com.application.management.school.dto.child.RoleDetailsObject;
 import com.application.management.school.repository.RoleRepository;
 import com.application.management.school.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
