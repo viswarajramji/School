@@ -190,14 +190,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/role/deleteRoleById/1",
+							"raw": "{{base_url}}/role/deleteRoleById/2",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"role",
 								"deleteRoleById",
-								"1"
+								"2"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -225,7 +225,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\"3\"]",
+							"raw": "[\"8\",\"9\"]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -306,7 +306,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"menuName\":\"Results\",\n    \"menuLink\":\"Results.com\",\n    \"menuDescription\":\"Results for student\"\n}\n\n",
+							"raw": "{\n    \"menuName\":\"Marks\",\n    \"menuLink\":\"Marks.com\",\n    \"menuDescription\":\"Marks for student\"\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -399,14 +399,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/menu/deleteMenuById/1",
+							"raw": "{{base_url}}/menu/deleteMenuById/6",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"menu",
 								"deleteMenuById",
-								"1"
+								"6"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -559,12 +559,12 @@
 						"header": [
 							{
 								"key": "userid",
-								"value": "1",
+								"value": "2",
 								"type": "text"
 							},
 							{
 								"key": "password",
-								"value": "test",
+								"value": "Shan",
 								"type": "text"
 							}
 						],
@@ -689,6 +689,39 @@
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sample",
+			"item": [
+				{
+					"name": "Sample",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/createDefaultSuperUserAndSuperAdminRole",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"createDefaultSuperUserAndSuperAdminRole"
+							]
+						}
 					},
 					"response": []
 				}
