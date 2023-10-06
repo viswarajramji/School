@@ -30,7 +30,7 @@ public class MenuModel {
     @Column(name = "MENU_DESCRIPTION")
     private String menuDescription;
 
-    @ManyToMany(mappedBy = "menuModelList")
+    @ManyToMany(mappedBy = "menuModelList",cascade = CascadeType.REMOVE)
     private List<RoleModel> roleModelList = new ArrayList<>();
 
 }
